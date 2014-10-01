@@ -4,7 +4,7 @@ Debugging and Logging with light speed. Don't write type casts in the debugger a
 
 ## Purpose
 
-DLog is just a collection of **class** methods that execute C functions or objc methods. During debug sessions it becomes tedious quickly to write `po (NSString*)NSStringFromCGRect(myRect)`. DLog solves this with a collection of **class** methods. I find myself reaching for this file commonly and I hope it will save you a lot of time and typing.
+DLog is just a collection of **class** methods that execute C functions or objc methods. During debug sessions it becomes tedious quickly to write `po (NSString*)NSStringFromCGRect(myRect)`. DLog solves this with a collection of **class** methods. I find myself reaching for this file commonly early in the life cycle of a project. It's delightful typing just a couple keys like 'D' TAB 'O' TAB and 'DLogObject' is autocompleted.
 
 ## Setup
 
@@ -37,6 +37,7 @@ TIP: Import in your Prefix.pch to include project-wide.
     
     DLogTimeStart(1);
     DLogTimeEnd(1); // => DL:1;4123;
+    ...
     
     
 ## Usage in debugger
@@ -51,6 +52,7 @@ TIP: Import in your Prefix.pch to include project-wide.
     po [DLog cTypeEncoding:myInt] // => int
     po [DLog cTypeEncoding:&myInt] // => int*
     po [DLog cTypeEncoding:myCGFloat] // => (32bit) float, (64bit) double
+    ...
 
 
 ## Easy
@@ -133,9 +135,9 @@ DLog Logging methods include a prefix (by default 'DL') but this can be configur
 
 1. Fork
 2. **Create a new branch with username-myfeature** 
-ex: gauravk92-adding-more-encodings-to-cTypeEncoding-method
-ex: gauravk92-fix-bug-on-osx-nsrange-method
-ex: gauravk92-add-JSValue-to-json-log-method
+- Ex: gauravk92-adding-more-encodings-to-cTypeEncoding-method
+- Ex: gauravk92-fix-bug-on-osx-nsrange-method
+- Ex: gauravk92-add-JSValue-to-json-log-method
 3. Commit and submit pull request
 
 ## Contact
