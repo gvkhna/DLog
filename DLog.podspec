@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'DLog'
-  s.version      = '1.0.0'
+  s.version      = '1.0.1'
   s.summary      = 'An insanely useful debug logging class. Ex: DLogUIGestureRecognizerState(myState);'
   s.homepage     = 'https://github.com/gauravk92/DLog'
   s.license      = { :type => 'MIT' }
