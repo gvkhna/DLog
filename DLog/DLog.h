@@ -1,6 +1,6 @@
 //
-//  dlog.h
-//  dlog
+//  DLog.h
+//  DLog
 //
 //  Created by Gaurav Khanna on 11/18/13.
 //  Copyright (c) 2014 Gaurav Khanna. All rights reserved.
@@ -47,7 +47,13 @@
 + (NSString*)Class:(Class)class_val;
 + (NSString*)TypeEncoding:(id)value;
 + (NSString*)cTypeEncoding:(void*)value;
-+ (const char*)cType:(int)type;
++ (const char *)cTypeString:(int)type;
+
++ (NSString*)base64EncodedStringWithData:(NSData*)data;
++ (NSString*)base64EncodedString64CharacterLineLengthWithData:(NSData*)data;
++ (NSString*)base64EncodedString76CharacterLineLengthWithData:(NSData*)data;
++ (NSString*)base64EncodedStringEndLineWithCarriageReturnWithData:(NSData*)data;
++ (NSString*)base64EncodedStringEndLineWithLineFeedWithData:(NSData*)data;
 
 + (NSString*)NSRange:(NSRange)range;
 + (NSString*)CGPoint:(CGPoint)point;
@@ -56,6 +62,8 @@
 + (NSString*)CATransform3D:(CATransform3D)transform;
 
 #if TARGET_OS_IPHONE || TARGET_OS_SIMULATOR
+
++ (NSString*)base64EncodedStringWithUIImage:(UIImage*)image;
 
 + (NSString*)UIView:(UIView*)view;
 + (NSString*)UIImage:(UIImage*)image;

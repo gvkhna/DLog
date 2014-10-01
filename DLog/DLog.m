@@ -1,6 +1,6 @@
 //
-//  debug.m
-//  gfitapp
+//  DLog.m
+//  DLog
 //
 //  Created by Gaurav Khanna on 12/11/13.
 //  Copyright (c) 2013 Gaurav Khanna. All rights reserved.
@@ -138,6 +138,26 @@
     }
 }
 
++ (NSString*)base64EncodedStringWithData:(NSData*)data {
+    return [data base64EncodedStringWithOptions:0];
+}
+
++ (NSString*)base64EncodedString64CharacterLineLengthWithData:(NSData*)data {
+    return [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+}
+
++ (NSString*)base64EncodedString76CharacterLineLengthWithData:(NSData*)data {
+    return [data base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength];
+}
+
++ (NSString*)base64EncodedStringEndLineWithCarriageReturnWithData:(NSData*)data {
+    return [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
+}
+
++ (NSString*)base64EncodedStringEndLineWithLineFeedWithData:(NSData*)data {
+    return [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+}
+
 #pragma mark - Foundation Data Type Descriptions
 
 + (NSString*)NSRange:(NSRange)range {
@@ -178,9 +198,16 @@
 
 #pragma mark - iOS Data Type Descriptions
 
++ (NSString*)base64EncodedStringWithUIImage:(UIImage*)image {
+    return [DLog base64EncodedStringWithData:UIImagePNGRepresentation(image)];
+}
+
 + (NSString*)UIView:(UIView*)view {
-    if ([view respondsToSelector:@selector(recursiveDescription)]) {
-        return [view performSelector:@selector(recursiveDescription)];
+    SEL recursiveDescriptionSEL = NSSelectorFromString(@"recursiveDescription");
+    if ([view respondsToSelector:recursiveDescriptionSEL]) {
+        IMP recursiveDescriptionIMP = [view methodForSelector:recursiveDescriptionSEL];
+        NSString * (*recursiveDescriptionFunction)(id, SEL) = (void *)recursiveDescriptionIMP;
+        return recursiveDescriptionFunction(view, recursiveDescriptionSEL);
     }
     return nil;
 }
@@ -241,7 +268,18 @@
 }
 
 + (void)performLowMemoryWarning {
-    [[UIApplication sharedApplication] performSelector:@selector(_performMemoryWarning)];
+    SEL sharedApplicationSEL = @selector(sharedApplication);
+    SEL memoryWarningSEL = NSSelectorFromString(@"_performMemoryWarning");
+    if ([UIApplication resolveClassMethod:sharedApplicationSEL]) {
+        IMP sharedApplicationIMP = [UIApplication methodForSelector:sharedApplicationSEL];
+        UIApplication * (*sharedApplicationFunction)(id, SEL) = (void *)sharedApplicationIMP;
+        UIApplication *app = sharedApplicationFunction([UIApplication class], sharedApplicationSEL);
+        if ([app respondsToSelector:memoryWarningSEL]) {
+            IMP memoryWarningIMP = [UIApplication methodForSelector:memoryWarningSEL];
+            void (*memoryWarningFunction)(id, SEL) = (void *)memoryWarningIMP;
+            memoryWarningFunction(app, memoryWarningSEL);
+        }
+    }
 }
 
 #else
