@@ -8,7 +8,7 @@
 
 #if DEBUG
 
-#import "dlog.h"
+#import "DLog.h"
 #import <objc/runtime.h>
 
 @implementation DLog
@@ -212,7 +212,7 @@
     return nil;
 }
 
-+ (NSString*)UIImage:(UIImage*)image {
++ (NSData*)UIImage:(UIImage*)image {
     return UIImagePNGRepresentation(image);
 }
 
