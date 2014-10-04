@@ -2,6 +2,8 @@
 
 Debugging and Logging with light speed. Don't write type casts in the debugger again. Just simply write `[DLog CGRect:myRect]` in the debugger, or `DLogCGRect(myRect)` in code, everything is autocompleted!
 
+![DLog Autocompletion Example](https://github.com/gauravk92/DLog/raw/master/DLog.gif)
+
 ## Purpose
 
 DLog is just a collection of **class** methods that execute C functions or objc methods. During debug sessions it becomes tedious quickly to write `po (NSString*)NSStringFromCGRect(myRect)`. DLog solves this with a collection of **class** methods. I find myself reaching for this file commonly early in the life cycle of a project. It's delightful typing just a couple keys like 'D' TAB 'O' TAB and 'DLogObject' is autocompleted.
