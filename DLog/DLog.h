@@ -174,8 +174,8 @@
             #define DLogNSPoint(val)            NSLog(@"%s:%s;%@;", PRE, #val, NSStringFromPoint(val))
             #define DLogNSSize(val)             NSLog(@"%s:%s;%@;", PRE, #val, NSStringFromSize(val))
             #define DLogNSRect(val)             NSLog(@"%s:%s;%@;", PRE, #val, NSStringFromRect(val))
-            #define DLogNSHashTable(obj)        NSLog(@"%s:%s;%@;", PRE, #val, NSStringFromHashTable(val))
-            #define DLogNSMapTable(obj)         NSLog(@"%s:%s;%@;", PRE, #val, NSStringFromMapTable(val))
+            #define DLogNSHashTable(obj)        NSLog(@"%s:%s;%@;", PRE, #obj, NSStringFromHashTable(val))
+            #define DLogNSMapTable(obj)         NSLog(@"%s:%s;%@;", PRE, #obj, NSStringFromMapTable(val))
 
         #endif
 

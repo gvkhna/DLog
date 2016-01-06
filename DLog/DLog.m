@@ -186,7 +186,7 @@
 #if TARGET_OS_IPHONE || TARGET_OS_SIMULATOR
     return NSStringFromCGRect(rect);
 #else
-    return NSStringFromRect(NSRectFromCGRect(rect)));
+    return NSStringFromRect(NSRectFromCGRect(rect));
 #endif
 }
 
